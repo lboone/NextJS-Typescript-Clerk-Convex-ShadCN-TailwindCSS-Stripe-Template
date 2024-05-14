@@ -1,4 +1,4 @@
-import { defineSchema, defineTable } from "convex/server"
+import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
@@ -7,5 +7,9 @@ export default defineSchema({
     email: v.string(),
     firstName: v.string(),
     lastName: v.string(),
-  }).index("by_token",["tokenIdentifier"]),
+    endsOn: v.optional(v.number()),
+    subscriptionId: v.optional(v.string()),
+  })
+    .index("by_token", ["tokenIdentifier"])
+    .index("by_subscriptionId", ["subscriptionId"]),
 });
